@@ -19,6 +19,35 @@ const char *entity_base::typenames[] =
 	"Bool8"
 };
 
+const char *entity_base::entity_typenames[] =
+{
+	"WorldSpawn",
+	"PlayerSpawn",
+	"Player",
+	"PointLight",
+	"Grenade",
+	"Rocket",
+	"Cell",
+	"Burst",
+	"Stake",
+	"Teleporter",
+	"Target",
+	"JumpPad",
+	"Effect",
+	"Pickup",
+	"Temp",
+	"CameraPath",
+	"Vote",
+	"Damage",
+	"RaceStart",
+	"RaceFinish",
+	"WeaponRestrictor",
+	"Prefab",
+	"VolumeSelect",
+	"WorkshopScreenshot",
+	"ReflectionProbe"
+};
+
 #define SPECIALIZE_PRINT_VAL(TYPE, FORMAT, ...)	\
 template<> void entity_base::print_val<TYPE>(FILE *outfile, TYPE&& val)	\
 {	\
@@ -32,6 +61,36 @@ SPECIALIZE_PRINT_VAL(std::string, "%s", val.c_str())
 SPECIALIZE_PRINT_VAL(bool, "%u", val ? 1 : 0)
 SPECIALIZE_PRINT_VAL(vec3_t, "%.6f %.6f %.6f", val[0], val[1], val[2])
 
+//entity_base::brush::vertex::vertex() : x(0), y(0), z(0)
+//{
+//}
+
+entity_base::brush::vertex::vertex(const vertex& v) : x(v.x), y(v.y), z(v.z)
+{
+}
+
+entity_base::brush::vertex::vertex(float x, float y, float z) : x(x), y(y), z(z)
+{
+}
+
+entity_base::brush::vertex& entity_base::brush::vertex::operator= (const vertex& v)
+{
+	x = v.x;
+	y = v.y;
+	z = v.z;
+	return *this;
+}
+
+bool entity_base::brush::vertex::operator== (const vertex& v) const
+{
+	return v.x == x && v.y == y && v.z == z;
+}
+
+bool entity_base::brush::vertex::operator< (const vertex& v) const
+{
+	return (v.x == x) ? (v.y == y) ? (v.z < z) : (v.y < y) : (v.x < x);
+}
+
 void entity_base::brush::face::print(FILE *outfile) const
 {
 	fprintf(outfile, "\t\t\t%.6f %.6f %.6f %.6f %.6f ", wtf[0], wtf[1], wtf[2], wtf[3], wtf[4]);
@@ -44,10 +103,11 @@ void entity_base::brush::face::print(FILE *outfile) const
 
 void entity_base::brush::face::add_vertex(float x, float y, float z)
 {
-
+	vertex v{ x,y,z };
+	vertices.push_back(&parent.vertices[v]);
 }
 
-entity_base::brush::brush() : vertices([](const vec3_t*& a, const vec3_t*& b) { return (a[0] == b[0]) ? (a[1] == b[1]) ? (a[2] < b[2]) : (a[1] < b[1]) : (a[0] < b[0]); })
+entity_base::brush::brush()
 {
 }
 
@@ -61,21 +121,21 @@ entity_base::brush::~brush()
 
 entity_base::brush::face& entity_base::brush::new_face(const std::string& material, uint32_t color)
 {
-	face *f = new face(material, color);
+	face *f = new face(*this, material, color);
 	faces.push_back(f);
 	return *f;
 }
 
 entity_base::brush::face& entity_base::brush::new_face(std::string&& material, uint32_t color)
 {
-	face *f = new face(material, color);
+	face *f = new face(*this, material, color);
 	faces.push_back(f);
 	return *f;
 }
 
 entity_base::brush::face& entity_base::brush::new_face(uint32_t color)
 {
-	face *f = new face("", color);
+	face *f = new face(*this, "", color);
 	faces.push_back(f);
 	return *f;
 }
@@ -87,8 +147,7 @@ void entity_base::brush::print(FILE *outfile)
 	for (auto&& v : vertices)
 	{
 		v.second = vertex_count++;
-		fprintf(outfile, "\t\t\t");
-		fprintf(outfile, "\t\t\t%.6f %.6f %.6f", v.first[0], v.first[1], v.first[2]);
+		fprintf(outfile, "\t\t\t%.6f %.6f %.6f\n", v.first.x, v.first.y, v.first.z);
 	}
 	fprintf(outfile, "\t\tfaces\n");
 	for (auto&& f : faces)
@@ -97,11 +156,8 @@ void entity_base::brush::print(FILE *outfile)
 	}
 }
 
-entity_base::entity_base(entity_type_t type)
+entity_base::entity_base(entity_type_t type) : type(type)
 {
-	property<UInt8> *p = new property<UInt8>("type");
-	p->val = type;
-	properties.emplace_back(p);
 }
 
 entity_base::~entity_base()
@@ -126,7 +182,7 @@ entity_base::brush& entity_base::new_brush()
 
 void entity_base::print(FILE *outfile) const
 {
-	fprintf(outfile, "\tentity\n");
+	fprintf(outfile, "\tentity\n\t\ttype %s\n",entity_typenames[type]);
 	for (auto&& prop : properties)
 	{
 		prop->print(outfile);
