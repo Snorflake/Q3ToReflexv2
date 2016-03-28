@@ -61,7 +61,7 @@ SPECIALIZE_PRINT_VAL(std::string, "%s", val.c_str())
 SPECIALIZE_PRINT_VAL(bool, "%u", val ? 1 : 0)
 SPECIALIZE_PRINT_VAL(vec3_t, "%.6f %.6f %.6f", val[0], val[1], val[2])
 
-entity_base::brush::vertex::vertex(const vertex& v) : x(v.x), y(v.y), z(v.z)
+entity_base::brush::vertex::vertex(const entity_base::brush::vertex& v) : x(v.x), y(v.y), z(v.z)
 {
 }
 
@@ -69,7 +69,7 @@ entity_base::brush::vertex::vertex(float x, float y, float z) : x(x), y(y), z(z)
 {
 }
 
-entity_base::brush::vertex& entity_base::brush::vertex::operator= (const vertex& v)
+entity_base::brush::vertex& entity_base::brush::vertex::operator= (const entity_base::brush::vertex& v)
 {
 	x = v.x;
 	y = v.y;
@@ -77,12 +77,12 @@ entity_base::brush::vertex& entity_base::brush::vertex::operator= (const vertex&
 	return *this;
 }
 
-bool entity_base::brush::vertex::operator== (const vertex& v) const
+bool entity_base::brush::vertex::operator== (const entity_base::brush::vertex& v) const
 {
 	return v.x == x && v.y == y && v.z == z;
 }
 
-bool entity_base::brush::vertex::operator< (const vertex& v) const
+bool entity_base::brush::vertex::operator< (const entity_base::brush::vertex& v) const
 {
 	return (v.x == x) ? (v.y == y) ? (v.z < z) : (v.y < y) : (v.x < x);
 }
@@ -99,7 +99,7 @@ void entity_base::brush::face::print(FILE *outfile) const
 
 void entity_base::brush::face::add_vertex(float x, float y, float z)
 {
-	vertex v{ x,y,z };
+	vertex v(x, y, z);
 	vertices.push_back(&parent.vertices[v]);
 }
 
