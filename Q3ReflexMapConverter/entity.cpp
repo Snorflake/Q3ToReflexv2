@@ -61,10 +61,6 @@ SPECIALIZE_PRINT_VAL(std::string, "%s", val.c_str())
 SPECIALIZE_PRINT_VAL(bool, "%u", val ? 1 : 0)
 SPECIALIZE_PRINT_VAL(vec3_t, "%.6f %.6f %.6f", val[0], val[1], val[2])
 
-//entity_base::brush::vertex::vertex() : x(0), y(0), z(0)
-//{
-//}
-
 entity_base::brush::vertex::vertex(const vertex& v) : x(v.x), y(v.y), z(v.z)
 {
 }
