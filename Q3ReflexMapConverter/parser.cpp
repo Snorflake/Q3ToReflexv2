@@ -11,7 +11,7 @@ void parser::init(const std::string& mapname)
 
 bool parser::start()
 {
-	auto all_lines = lines();
+	auto&& all_lines = lines();
 	if (all_lines.empty()) return false;
 
 	parsebrushes(all_lines);
@@ -80,7 +80,7 @@ void parser::parsebrushes(const std::vector<std::vector<std::string>>& line_arra
 	entity<WorldSpawn> worldspawn;
 	entity_base::brush* brush = 0;
 	entity_base::brush::face* face = 0;
-	for (auto it : line_array) {
+	for (auto&& it : line_array) {
 		if (it.empty()) continue;
 		if (state == parsestate::start) {
 			if (it[0].find("classname") != std::string::npos && it[1].find("worldspawn") != std::string::npos) {
@@ -111,7 +111,6 @@ void parser::parsebrushes(const std::vector<std::vector<std::string>>& line_arra
 
 				state = prevstate;
 				prevstate = parsestate::brush;
-				face = &brush->new_face(); //TODO: material names
 				//ERROR: Some reference error or shit, something is fucking up and it's not populating worldspawn's face.
 				continue;
 			}
@@ -121,9 +120,10 @@ void parser::parsebrushes(const std::vector<std::vector<std::string>>& line_arra
 				continue;
 			}
 #define TF(i) std::stof(it[i]) //TF == to float
-			face->add_vertex(TF(1), TF(2), TF(3));
-			face->add_vertex(TF(6), TF(7), TF(8));
-			face->add_vertex(TF(11), TF(12), TF(13));
+			auto&& face = brush->new_face(); //TODO: material names
+			face.add_vertex(TF(1), TF(2), TF(3));
+			face.add_vertex(TF(6), TF(7), TF(8));
+			face.add_vertex(TF(11), TF(12), TF(13));
 		}
 	}
 	worldspawn.print(stdout);
