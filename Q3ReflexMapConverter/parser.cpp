@@ -3,7 +3,7 @@
 #include <cstdlib>
 
 
-void parser::init(std::string mapname)
+void parser::init(const std::string& mapname)
 {
 	this->mapname = mapname;
 

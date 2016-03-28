@@ -10,7 +10,7 @@ public:
 	/*
 	 * initializes all required values
 	 */
-	void init(std::string mapname);
+	void init(const std::string& mapname);
 
 	/*
 	 * starts the parser going
