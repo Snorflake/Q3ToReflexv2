@@ -110,10 +110,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="entity.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="parser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ctordefs.h" />
+    <ClInclude Include="entity.h" />
     <ClInclude Include="parser.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
