@@ -64,10 +64,11 @@ protected:
 		UInt8,
 		Int8,
 		Float,
-		Bool8
+		Bool8,
 	};
 
 	static const char *typenames[15];
+	static const char *entity_typenames[25];
 
 private:
 	template<typename T> static inline void print_val(FILE *outfile, T&& val);
@@ -81,21 +82,42 @@ private:
 	};
 
 public:
+
 	class brush
 	{
 		friend class entity_base;
 
 	public:
+
+		class vertex
+		{
+			friend class brush;
+			float x;
+			float y;
+			float z;
+		public:
+			vertex(const vertex& v);
+			vertex(float x, float y, float z);
+			vertex& operator= (const vertex& v);
+			bool operator== (const vertex& v) const;
+			bool operator< (const vertex& v) const;
+		};
+
 		class face
 		{
 			friend class brush;
+
+			brush						&parent;
+
 			float						wtf[5];		// pls
 			std::vector<const uint8_t*>	vertices;
 			uint32_t					color;
 			std::string					material;
 
+			face();
+
 			inline void print(FILE *outfile) const;
-			template<typename S> face(S&& material, uint32_t color) : material(material), color(color)
+			template<typename S> face(brush& parent, S&& material, uint32_t color) : parent(parent), material(material), color(color)
 			{
 				wtf[0] = 0;
 				wtf[1] = 0;
@@ -110,7 +132,7 @@ public:
 
 	private:
 
-		std::map<vec3_t, uint8_t, std::function<bool(const vec3_t*&, const vec3_t*&)>>	vertices;
+		std::map<vertex, uint8_t>	vertices;
 		std::vector<face*>	faces;
 		
 		brush();
@@ -176,6 +198,7 @@ protected:
 		}
 		NO_COPY_OR_MOVE_CTOR(property)
 	};
+	const entity_type_t type;
 	entity_base(entity_type_t type);
 	virtual ~entity_base();
 public:
