@@ -20,6 +20,8 @@ private:
 
 	std::vector<std::vector<std::string>> lines();
 
+	void parsebrushes(const std::vector<std::vector<std::string>>& line_array);
+
 	std::string mapname;
 };
 

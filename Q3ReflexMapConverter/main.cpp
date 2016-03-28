@@ -17,6 +17,6 @@ int main(int argc, char** argv)
 		printf("Map parsing failed! Is your input correct?\n");
 		return 1;
 	}
-
+	while (1);
 	return 0;
 }

@@ -1,7 +1,7 @@
 #include "parser.h"
 #include <fstream>
 #include <cstdlib>
-
+#include "entity.h"
 
 void parser::init(const std::string& mapname)
 {
@@ -13,6 +13,8 @@ bool parser::start()
 {
 	auto all_lines = lines();
 	if (all_lines.empty()) return false;
+
+	parsebrushes(all_lines);
 
 
 	return true;
@@ -46,7 +48,7 @@ std::vector<std::vector<std::string>> parser::lines()
 				//while theres still shit left on the line
 				
 				//fuck this loop off if its a comment
-				if (strcmp("//", token) == 0) {
+				if (std::string(token).find("//") != std::string::npos) {
 					break; //next line bitch nothing to see here
 				}
 				else {
@@ -61,4 +63,62 @@ std::vector<std::vector<std::string>> parser::lines()
 	//if it didnt open itll return a blank array. just check for that and you're good to go
 
 	return ret;
+}
+enum class parsestate
+{
+	start,
+	entity,
+	brush,
+	patch
+	//TODO: others
+};
+void parser::parsebrushes(const std::vector<std::vector<std::string>>& line_array)
+{
+	parsestate state = parsestate::start;
+	parsestate prevstate = state;
+
+	entity<WorldSpawn> worldspawn;
+	for (auto it : line_array) {
+		if (it.empty()) continue;
+		if (state == parsestate::start) {
+			if (it[0].find("music") != std::string::npos) {
+				state = parsestate::entity;
+				prevstate = parsestate::start;
+			}
+			//TODO: other types
+		}
+		else if (state == parsestate::entity) {
+			if (it[0].find("{") != std::string::npos) {
+				state = parsestate::brush;
+				prevstate = parsestate::entity;
+			}
+			if (it[0].find("}") != std::string::npos) {
+				state = prevstate;
+				prevstate = parsestate::entity;
+			}
+		}
+		else if (state == parsestate::brush) {
+			if (it[0].find("(") == std::string::npos) {
+				//TODO: handle this. this isn't a brush
+			}
+			if (it[0].find("}") != std::string::npos) {
+
+				state = prevstate;
+				prevstate = parsestate::brush;
+				continue;
+			}
+			if (it[0].find("patchDef") != std::string::npos) {
+				//this is NOT a brush!
+				state = parsestate::patch;
+				continue;
+			}
+			auto& brush = worldspawn.new_brush();
+			auto& face = brush.new_face(it[15]);
+#define TF(i) std::stof(it[i]) //TF == to float
+			face.add_vertex(TF(1), TF(2), TF(3));
+			face.add_vertex(TF(6), TF(7), TF(8));
+			face.add_vertex(TF(11), TF(12), TF(13));
+		}
+	}
+	worldspawn.print(stdout);
 }
