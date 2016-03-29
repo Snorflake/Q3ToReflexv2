@@ -79,7 +79,6 @@ void parser::parsebrushes(const std::vector<std::vector<std::string>>& line_arra
 
 	entity<WorldSpawn> worldspawn;
 	entity_base::brush* brush = 0;
-	entity_base::brush::face* face = 0;
 	for (auto&& it : line_array) {
 		if (it.empty()) continue;
 		if (state == parsestate::start) {
