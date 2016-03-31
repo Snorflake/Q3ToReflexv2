@@ -1,7 +1,42 @@
 
-# Created by https://www.gitignore.io/api/cpp,visualstudio
+# Created by https://www.gitignore.io/api/premake-gmake,c++,visualstudio
 
-#!! ERROR: cpp is undefined. Use list command to see defined gitignore types !!#
+### premake-gmake ###
+Makefile
+*.make
+obj/
+
+
+### C++ ###
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+#*.exe
+*.out
+*.app
+
 
 ### VisualStudio ###
 ## Ignore Visual Studio temporary files, build results, and
@@ -144,10 +179,15 @@ publish/
 # Publish Web Output
 *.[Pp]ublish.xml
 *.azurePubxml
-# TODO: Comment the next line if you want to checkin your web deploy settings 
+# TODO: Comment the next line if you want to checkin your web deploy settings
 # but database connection strings (with potential passwords) will be unencrypted
 *.pubxml
 *.publishproj
+
+# Microsoft Azure Web App publish settings. Comment the next line if you want to
+# checkin your Azure Web App publish settings, but sensitive information contained
+# in these scripts will be unencrypted
+PublishScripts/
 
 # NuGet Packages
 *.nupkg
@@ -192,7 +232,7 @@ ClientBin/
 node_modules/
 orleans.codegen.cs
 
-# Since there are multiple workflows, uncomment next line to ignore bower_components 
+# Since there are multiple workflows, uncomment next line to ignore bower_components
 # (https://github.com/github/gitignore/pull/1529#issuecomment-104372622)
 #bower_components/
 
@@ -250,3 +290,8 @@ paket-files/
 .idea/
 *.sln.iml
 
+#premake excludes
+*.vcxproj
+*.sln
+
+*.swp
