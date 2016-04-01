@@ -6,7 +6,7 @@ project "Q3ReflexMapConverter"
 	language "C++"
 	characterset "MBCS"
 	targetdir "bin/%{cfg.buildcfg}"
-	buildoptions { "-std=c++11" }
+	buildoptions { "-std=c++14" }
 	files {"src/**.h", "src/**.hpp", "src/**.cpp"}
 	filter "configurations:Debug"
 		flags{"Symbols"}

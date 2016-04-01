@@ -2,6 +2,8 @@
 #include <fstream>
 #include <cstdlib>
 #include "entity.h"
+#include <cstdio>
+#include <cstring>
 
 void parser::init(const std::string& mapname)
 {
@@ -39,11 +41,14 @@ std::vector<std::vector<std::string>> parser::lines()
 			char szline[2048]; //HARDCODED VALUES WEWEWEWEWEWE
 			const char* delim = " \t\n\r";
 			char* token;
-			char* context;
+			//char* context;
 
 			//put that fuckin string into that char array
-			strcpy_s(szline, line.c_str());
-			token = strtok_s(szline, delim, &context); // split that shit from the delimiter
+			//strcpy_s(szline, line.c_str());	
+			//strncpy(szline, 2048, line.c_str());
+			snprintf(szline, 2048, "%s", line.c_str());
+			//token = strtok_s(szline, delim, &context); // split that shit from the delimiter
+			token = strtok(szline,delim);
 			while (token != nullptr) {
 				//while theres still shit left on the line
 				
@@ -53,7 +58,8 @@ std::vector<std::vector<std::string>> parser::lines()
 				}
 				else {
 					ret.back().push_back(token); //put the token in the array so we can rape it later
-					token = strtok_s(nullptr, delim, &context); //no need to pass a sourcce string it goes off context
+					//token = strtok_s(nullptr, delim, &context); //no need to pass a sourcce string it goes off context
+					token = strtok(nullptr, delim);
 				}
 			}
 		}

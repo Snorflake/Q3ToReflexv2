@@ -1,0 +1,101 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Burst	entity.h	/^	Burst,$/;"	e	enum:uint8_t
+CTORDEFS_H	ctordefs.h	4;"	d
+CameraPath	entity.h	/^	CameraPath,$/;"	e	enum:uint8_t
+Cell	entity.h	/^	Cell,$/;"	e	enum:uint8_t
+Damage	entity.h	/^	Damage,$/;"	e	enum:uint8_t
+ENTITY_H	entity.h	4;"	d
+Effect	entity.h	/^	Effect,$/;"	e	enum:uint8_t
+Grenade	entity.h	/^	Grenade,$/;"	e	enum:uint8_t
+JumpPad	entity.h	/^	JumpPad,$/;"	e	enum:uint8_t
+NO_COPY_CTOR	ctordefs.h	6;"	d
+NO_COPY_OR_MOVE_CTOR	ctordefs.h	14;"	d
+NO_MOVE_CTOR	ctordefs.h	10;"	d
+PARSER_H	parser.h	2;"	d
+Pickup	entity.h	/^	Pickup,$/;"	e	enum:uint8_t
+Player	entity.h	/^	Player,$/;"	e	enum:uint8_t
+PlayerSpawn	entity.h	/^	PlayerSpawn,$/;"	e	enum:uint8_t
+PointLight	entity.h	/^	PointLight,$/;"	e	enum:uint8_t
+Prefab	entity.h	/^	Prefab,$/;"	e	enum:uint8_t
+RaceFinish	entity.h	/^	RaceFinish,$/;"	e	enum:uint8_t
+RaceStart	entity.h	/^	RaceStart,$/;"	e	enum:uint8_t
+ReflectionProbe	entity.h	/^	ReflectionProbe$/;"	e	enum:uint8_t
+Rocket	entity.h	/^	Rocket,$/;"	e	enum:uint8_t
+SPECIALIZE_PRINT_VAL	entity.cpp	51;"	d	file:
+Stake	entity.h	/^	Stake,$/;"	e	enum:uint8_t
+TF	parser.cpp	122;"	d	file:
+Target	entity.h	/^	Target,$/;"	e	enum:uint8_t
+Teleporter	entity.h	/^	Teleporter,$/;"	e	enum:uint8_t
+Temp	entity.h	/^	Temp,$/;"	e	enum:uint8_t
+VolumeSelect	entity.h	/^	VolumeSelect,$/;"	e	enum:uint8_t
+Vote	entity.h	/^	Vote,$/;"	e	enum:uint8_t
+WeaponRestrictor	entity.h	/^	WeaponRestrictor,$/;"	e	enum:uint8_t
+WorkshopScreenshot	entity.h	/^	WorkshopScreenshot,$/;"	e	enum:uint8_t
+WorldSpawn	entity.h	/^	WorldSpawn,$/;"	e	enum:uint8_t
+add_vertex	entity.cpp	/^void entity_base::brush::face::add_vertex(float x, float y, float z)$/;"	f	class:entity_base::brush::face
+brush	entity.cpp	/^entity_base::brush::brush()$/;"	f	class:entity_base::brush
+brush	entity.h	/^	class brush$/;"	c	class:entity_base
+brush	parser.cpp	/^	brush,$/;"	m	class:parsestate	file:
+brushes	entity.h	/^	std::list<brush*>			brushes;$/;"	m	class:entity_base
+color	entity.h	/^			uint32_t					color;$/;"	m	class:entity_base::brush::face
+entity	entity.h	/^	entity() : entity_base(type) {}$/;"	f	class:entity
+entity	entity.h	/^template<entity_type_t type> class entity : public entity_base$/;"	c
+entity	parser.cpp	/^	entity,$/;"	m	class:parsestate	file:
+entity_base	entity.cpp	/^entity_base::entity_base(entity_type_t type) : type(type)$/;"	f	class:entity_base
+entity_base	entity.h	/^class entity_base$/;"	c
+entity_typenames	entity.cpp	/^const char *entity_base::entity_typenames[] =$/;"	m	class:entity_base	file:
+entity_typenames	entity.h	/^	static const char *entity_typenames[25];$/;"	m	class:entity_base
+face	entity.h	/^			template<typename S> face(brush& parent, S&& material, uint32_t color) : parent(parent), material(material), color(color)$/;"	f	class:entity_base::brush::face
+face	entity.h	/^		class face$/;"	c	class:entity_base::brush
+faces	entity.h	/^		std::vector<face*>	faces;$/;"	m	class:entity_base::brush
+init	parser.cpp	/^void parser::init(const std::string& mapname)$/;"	f	class:parser
+key	entity.h	/^		const std::string key;$/;"	m	class:entity_base::property
+lines	parser.cpp	/^std::vector<std::vector<std::string>> parser::lines()$/;"	f	class:parser
+main	main.cpp	/^int main(int argc, char** argv)$/;"	f
+mapname	parser.h	/^	std::string mapname;$/;"	m	class:parser
+material	entity.h	/^			std::string					material;$/;"	m	class:entity_base::brush::face
+new_brush	entity.cpp	/^entity_base::brush& entity_base::new_brush()$/;"	f	class:entity_base
+new_face	entity.cpp	/^entity_base::brush::face& entity_base::brush::new_face(const std::string& material, uint32_t color)$/;"	f	class:entity_base::brush
+new_face	entity.cpp	/^entity_base::brush::face& entity_base::brush::new_face(std::string&& material, uint32_t color)$/;"	f	class:entity_base::brush
+new_face	entity.cpp	/^entity_base::brush::face& entity_base::brush::new_face(uint32_t color)$/;"	f	class:entity_base::brush
+operator <	entity.cpp	/^bool entity_base::brush::vertex::operator< (const entity_base::brush::vertex& v) const$/;"	f	class:entity_base::brush::vertex
+operator =	entity.cpp	/^entity_base::brush::vertex& entity_base::brush::vertex::operator= (const entity_base::brush::vertex& v)$/;"	f	class:entity_base::brush::vertex
+operator ==	entity.cpp	/^bool entity_base::brush::vertex::operator== (const entity_base::brush::vertex& v) const$/;"	f	class:entity_base::brush::vertex
+parent	entity.h	/^			brush						&parent;$/;"	m	class:entity_base::brush::face
+parsebrushes	parser.cpp	/^void parser::parsebrushes(const std::vector<std::vector<std::string>>& line_array)$/;"	f	class:parser
+parser	parser.h	/^	parser() {}$/;"	f	class:parser
+parser	parser.h	/^class parser$/;"	c
+parsestate	parser.cpp	/^enum class parsestate$/;"	c	file:
+print	entity.cpp	/^void entity_base::brush::face::print(FILE *outfile) const$/;"	f	class:entity_base::brush::face
+print	entity.cpp	/^void entity_base::brush::print(FILE *outfile)$/;"	f	class:entity_base::brush
+print	entity.cpp	/^void entity_base::print(FILE *outfile) const$/;"	f	class:entity_base
+print	entity.h	/^		virtual inline void print(FILE *outfile) const$/;"	f	class:entity_base::property
+properties	entity.h	/^	std::list<property_base*>	properties;$/;"	m	class:entity_base
+property	entity.h	/^		template<typename S> property(S&& key) : key(std::forward<std::string>(key)) {}$/;"	f	class:entity_base::property
+property	entity.h	/^	template<property_type_t type> class property : public property_base$/;"	c	class:entity_base
+property_base	entity.h	/^	class property_base$/;"	c	class:entity_base
+start	parser.cpp	/^	start,$/;"	m	class:parsestate	file:
+start	parser.cpp	/^bool parser::start()$/;"	f	class:parser
+type	entity.h	/^	const entity_type_t type;$/;"	m	class:entity_base
+typenames	entity.cpp	/^const char *entity_base::typenames[] =$/;"	m	class:entity_base	file:
+typenames	entity.h	/^	static const char *typenames[15];$/;"	m	class:entity_base
+uint8_t	entity.h	/^enum entity_type_t : uint8_t$/;"	g
+val	entity.h	/^		property_type<type> val;$/;"	m	class:entity_base::property
+vec3_t	entity.h	/^typedef float vec3_t[3];$/;"	t
+vertex	entity.cpp	/^entity_base::brush::vertex::vertex(const entity_base::brush::vertex& v) : x(v.x), y(v.y), z(v.z)$/;"	f	class:entity_base::brush::vertex
+vertex	entity.cpp	/^entity_base::brush::vertex::vertex(float x, float y, float z) : x(x), y(y), z(z)$/;"	f	class:entity_base::brush::vertex
+vertex	entity.h	/^		class vertex$/;"	c	class:entity_base::brush
+vertices	entity.h	/^			std::vector<const uint8_t*>	vertices;$/;"	m	class:entity_base::brush::face
+vertices	entity.h	/^		std::map<vertex, uint8_t>	vertices;$/;"	m	class:entity_base::brush
+wtf	entity.h	/^			float						wtf[5];		\/\/ pls$/;"	m	class:entity_base::brush::face
+x	entity.h	/^			float x;$/;"	m	class:entity_base::brush::vertex
+y	entity.h	/^			float y;$/;"	m	class:entity_base::brush::vertex
+z	entity.h	/^			float z;$/;"	m	class:entity_base::brush::vertex
+~brush	entity.cpp	/^entity_base::brush::~brush()$/;"	f	class:entity_base::brush
+~entity_base	entity.cpp	/^entity_base::~entity_base()$/;"	f	class:entity_base
+~property_base	entity.h	/^		virtual ~property_base() {}$/;"	f	class:entity_base::property_base

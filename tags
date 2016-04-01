@@ -1,0 +1,106 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Burst	src/entity.h	/^	Burst,$/;"	e	enum:uint8_t
+CTORDEFS_H	src/ctordefs.h	4;"	d
+CameraPath	src/entity.h	/^	CameraPath,$/;"	e	enum:uint8_t
+Cell	src/entity.h	/^	Cell,$/;"	e	enum:uint8_t
+Damage	src/entity.h	/^	Damage,$/;"	e	enum:uint8_t
+ENTITY_H	src/entity.h	4;"	d
+Effect	src/entity.h	/^	Effect,$/;"	e	enum:uint8_t
+Grenade	src/entity.h	/^	Grenade,$/;"	e	enum:uint8_t
+JumpPad	src/entity.h	/^	JumpPad,$/;"	e	enum:uint8_t
+NO_COPY_CTOR	src/ctordefs.h	6;"	d
+NO_COPY_OR_MOVE_CTOR	src/ctordefs.h	14;"	d
+NO_MOVE_CTOR	src/ctordefs.h	10;"	d
+PARSER_H	src/parser.h	2;"	d
+PROJECTS	Makefile	/^PROJECTS := Q3ReflexMapConverter$/;"	m
+Pickup	src/entity.h	/^	Pickup,$/;"	e	enum:uint8_t
+Player	src/entity.h	/^	Player,$/;"	e	enum:uint8_t
+PlayerSpawn	src/entity.h	/^	PlayerSpawn,$/;"	e	enum:uint8_t
+PointLight	src/entity.h	/^	PointLight,$/;"	e	enum:uint8_t
+Prefab	src/entity.h	/^	Prefab,$/;"	e	enum:uint8_t
+Q3ReflexMapConverter_config	Makefile	/^  Q3ReflexMapConverter_config = debug$/;"	m
+Q3ReflexMapConverter_config	Makefile	/^  Q3ReflexMapConverter_config = release$/;"	m
+RaceFinish	src/entity.h	/^	RaceFinish,$/;"	e	enum:uint8_t
+RaceStart	src/entity.h	/^	RaceStart,$/;"	e	enum:uint8_t
+ReflectionProbe	src/entity.h	/^	ReflectionProbe$/;"	e	enum:uint8_t
+Rocket	src/entity.h	/^	Rocket,$/;"	e	enum:uint8_t
+SILENT	Makefile	/^  SILENT = @$/;"	m
+SPECIALIZE_PRINT_VAL	src/entity.cpp	51;"	d	file:
+Stake	src/entity.h	/^	Stake,$/;"	e	enum:uint8_t
+TF	src/parser.cpp	126;"	d	file:
+Target	src/entity.h	/^	Target,$/;"	e	enum:uint8_t
+Teleporter	src/entity.h	/^	Teleporter,$/;"	e	enum:uint8_t
+Temp	src/entity.h	/^	Temp,$/;"	e	enum:uint8_t
+VolumeSelect	src/entity.h	/^	VolumeSelect,$/;"	e	enum:uint8_t
+Vote	src/entity.h	/^	Vote,$/;"	e	enum:uint8_t
+WeaponRestrictor	src/entity.h	/^	WeaponRestrictor,$/;"	e	enum:uint8_t
+WorkshopScreenshot	src/entity.h	/^	WorkshopScreenshot,$/;"	e	enum:uint8_t
+WorldSpawn	src/entity.h	/^	WorldSpawn,$/;"	e	enum:uint8_t
+add_vertex	src/entity.cpp	/^void entity_base::brush::face::add_vertex(float x, float y, float z)$/;"	f	class:entity_base::brush::face
+brush	src/entity.cpp	/^entity_base::brush::brush()$/;"	f	class:entity_base::brush
+brush	src/entity.h	/^	class brush$/;"	c	class:entity_base
+brush	src/parser.cpp	/^	brush,$/;"	m	class:parsestate	file:
+brushes	src/entity.h	/^	std::list<brush*>			brushes;$/;"	m	class:entity_base
+color	src/entity.h	/^			uint32_t					color;$/;"	m	class:entity_base::brush::face
+config	Makefile	/^  config=debug$/;"	m
+entity	src/entity.h	/^	entity() : entity_base(type) {}$/;"	f	class:entity
+entity	src/entity.h	/^template<entity_type_t type> class entity : public entity_base$/;"	c
+entity	src/parser.cpp	/^	entity,$/;"	m	class:parsestate	file:
+entity_base	src/entity.cpp	/^entity_base::entity_base(entity_type_t type) : type(type)$/;"	f	class:entity_base
+entity_base	src/entity.h	/^class entity_base$/;"	c
+entity_typenames	src/entity.cpp	/^const char *entity_base::entity_typenames[] =$/;"	m	class:entity_base	file:
+entity_typenames	src/entity.h	/^	static const char *entity_typenames[25];$/;"	m	class:entity_base
+face	src/entity.h	/^			template<typename S> face(brush& parent, S&& material, uint32_t color) : parent(parent), material(material), color(color)$/;"	f	class:entity_base::brush::face
+face	src/entity.h	/^		class face$/;"	c	class:entity_base::brush
+faces	src/entity.h	/^		std::vector<face*>	faces;$/;"	m	class:entity_base::brush
+init	src/parser.cpp	/^void parser::init(const std::string& mapname)$/;"	f	class:parser
+key	src/entity.h	/^		const std::string key;$/;"	m	class:entity_base::property
+lines	src/parser.cpp	/^std::vector<std::vector<std::string>> parser::lines()$/;"	f	class:parser
+main	src/main.cpp	/^int main(int argc, char** argv)$/;"	f
+mapname	src/parser.h	/^	std::string mapname;$/;"	m	class:parser
+material	src/entity.h	/^			std::string					material;$/;"	m	class:entity_base::brush::face
+new_brush	src/entity.cpp	/^entity_base::brush& entity_base::new_brush()$/;"	f	class:entity_base
+new_face	src/entity.cpp	/^entity_base::brush::face& entity_base::brush::new_face(const std::string& material, uint32_t color)$/;"	f	class:entity_base::brush
+new_face	src/entity.cpp	/^entity_base::brush::face& entity_base::brush::new_face(std::string&& material, uint32_t color)$/;"	f	class:entity_base::brush
+new_face	src/entity.cpp	/^entity_base::brush::face& entity_base::brush::new_face(uint32_t color)$/;"	f	class:entity_base::brush
+operator <	src/entity.cpp	/^bool entity_base::brush::vertex::operator< (const entity_base::brush::vertex& v) const$/;"	f	class:entity_base::brush::vertex
+operator =	src/entity.cpp	/^entity_base::brush::vertex& entity_base::brush::vertex::operator= (const entity_base::brush::vertex& v)$/;"	f	class:entity_base::brush::vertex
+operator ==	src/entity.cpp	/^bool entity_base::brush::vertex::operator== (const entity_base::brush::vertex& v) const$/;"	f	class:entity_base::brush::vertex
+parent	src/entity.h	/^			brush						&parent;$/;"	m	class:entity_base::brush::face
+parsebrushes	src/parser.cpp	/^void parser::parsebrushes(const std::vector<std::vector<std::string>>& line_array)$/;"	f	class:parser
+parser	src/parser.h	/^	parser() {}$/;"	f	class:parser
+parser	src/parser.h	/^class parser$/;"	c
+parsestate	src/parser.cpp	/^enum class parsestate$/;"	c	file:
+print	src/entity.cpp	/^void entity_base::brush::face::print(FILE *outfile) const$/;"	f	class:entity_base::brush::face
+print	src/entity.cpp	/^void entity_base::brush::print(FILE *outfile)$/;"	f	class:entity_base::brush
+print	src/entity.cpp	/^void entity_base::print(FILE *outfile) const$/;"	f	class:entity_base
+print	src/entity.h	/^		virtual inline void print(FILE *outfile) const$/;"	f	class:entity_base::property
+properties	src/entity.h	/^	std::list<property_base*>	properties;$/;"	m	class:entity_base
+property	src/entity.h	/^		template<typename S> property(S&& key) : key(std::forward<std::string>(key)) {}$/;"	f	class:entity_base::property
+property	src/entity.h	/^	template<property_type_t type> class property : public property_base$/;"	c	class:entity_base
+property_base	src/entity.h	/^	class property_base$/;"	c	class:entity_base
+start	src/parser.cpp	/^	start,$/;"	m	class:parsestate	file:
+start	src/parser.cpp	/^bool parser::start()$/;"	f	class:parser
+type	src/entity.h	/^	const entity_type_t type;$/;"	m	class:entity_base
+typenames	src/entity.cpp	/^const char *entity_base::typenames[] =$/;"	m	class:entity_base	file:
+typenames	src/entity.h	/^	static const char *typenames[15];$/;"	m	class:entity_base
+uint8_t	src/entity.h	/^enum entity_type_t : uint8_t$/;"	g
+val	src/entity.h	/^		property_type<type> val;$/;"	m	class:entity_base::property
+vec3_t	src/entity.h	/^typedef float vec3_t[3];$/;"	t
+vertex	src/entity.cpp	/^entity_base::brush::vertex::vertex(const entity_base::brush::vertex& v) : x(v.x), y(v.y), z(v.z)$/;"	f	class:entity_base::brush::vertex
+vertex	src/entity.cpp	/^entity_base::brush::vertex::vertex(float x, float y, float z) : x(x), y(y), z(z)$/;"	f	class:entity_base::brush::vertex
+vertex	src/entity.h	/^		class vertex$/;"	c	class:entity_base::brush
+vertices	src/entity.h	/^			std::vector<const uint8_t*>	vertices;$/;"	m	class:entity_base::brush::face
+vertices	src/entity.h	/^		std::map<vertex, uint8_t>	vertices;$/;"	m	class:entity_base::brush
+wtf	src/entity.h	/^			float						wtf[5];		\/\/ pls$/;"	m	class:entity_base::brush::face
+x	src/entity.h	/^			float x;$/;"	m	class:entity_base::brush::vertex
+y	src/entity.h	/^			float y;$/;"	m	class:entity_base::brush::vertex
+z	src/entity.h	/^			float z;$/;"	m	class:entity_base::brush::vertex
+~brush	src/entity.cpp	/^entity_base::brush::~brush()$/;"	f	class:entity_base::brush
+~entity_base	src/entity.cpp	/^entity_base::~entity_base()$/;"	f	class:entity_base
+~property_base	src/entity.h	/^		virtual ~property_base() {}$/;"	f	class:entity_base::property_base
